@@ -8,7 +8,7 @@ from PY_C import DB_GET
 from PY_D import SAVE_info
 from PY_E import LOAD_info
 import threading
-token=""
+token="6oduXIt+NO+ZScLq7S2t29+ddipFY2Oy6s02CTQDMd4NObKIYvMFu0QeclXhOtGpkcx4vStaFHl4R9gypjg5X8N8++4uTuWumQjEe3pXqzsONsZ5z545H8xykdbO0EL2AKBW53SCh6zri7rWH1XljAdB04t89/1O/w1cDnyilFU="
 
 app = Flask(__name__)
 

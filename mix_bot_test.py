@@ -41,26 +41,28 @@ def verify():
             line_bot.reply_message(data['events'][0]['replyToken'],TextSendMessage(alt_text='123',text=ans))
             previous_data=data                                          #儲存data
         elif '存檔' in input_text :                         #如果使用者輸入存檔
+            checkid=previous_data['events'][0]['source']['userId']
             try:
-                userid=data['events'][0]['source']['userId']            #使用者LINE ID為table
-                code=previous_data['events'][0]['message']['text']      #上次查詢的個股代號為欄位
-                if code in stock_name and code not in key_world:
-                    code=stock_dic[code]
-                    i=DB_GET(code)
-                    p=now_price(code)
-                    ans = f"{i}\n\n{p}"
-                    LI=threading.Thread(target=SAVE_info,args=(userid,code,ans,))
-                    LI.start()
-                    LI.join
-                    line_bot.reply_message(data['events'][0]['replyToken'],TextSendMessage(alt_text='123',text='已儲存'))
-                elif code in stock_code and code not in key_world:
-                    i=DB_GET(code)
-                    p=now_price(code)
-                    ans = f"{i}\n\n{p}"
-                    LI=threading.Thread(target=SAVE_info,args=(userid,code,ans,))
-                    LI.start()
-                    LI.join
-                    line_bot.reply_message(data['events'][0]['replyToken'],TextSendMessage(alt_text='123',text='已儲存'))
+                if checkid == userid :
+                    userid=data['events'][0]['source']['userId']            #使用者LINE ID為table
+                    code=previous_data['events'][0]['message']['text']      #上次查詢的個股代號為欄位
+                    if code in stock_name and code not in key_world:
+                        code=stock_dic[code]
+                        i=DB_GET(code)
+                        p=now_price(code)
+                        ans = f"{i}\n\n{p}"
+                        LI=threading.Thread(target=SAVE_info,args=(userid,code,ans,))
+                        LI.start()
+                        LI.join
+                        line_bot.reply_message(data['events'][0]['replyToken'],TextSendMessage(alt_text='123',text='已儲存'))
+                    elif code in stock_code and code not in key_world:
+                        i=DB_GET(code)
+                        p=now_price(code)
+                        ans = f"{i}\n\n{p}"
+                        LI=threading.Thread(target=SAVE_info,args=(userid,code,ans,))
+                        LI.start()
+                        LI.join
+                        line_bot.reply_message(data['events'][0]['replyToken'],TextSendMessage(alt_text='123',text='已儲存'))
             except:
                 line_bot.reply_message(data['events'][0]['replyToken'],TextSendMessage(alt_text='123',text='請先查詢再存檔'))
         elif '讀取' in input_text:                          #如果使用者輸入讀取

@@ -7,8 +7,8 @@ def LOAD_info(userid):
     db_setting = {
         "host": "127.0.0.1",
         "port": 3306,
-        "user": "root",
-        "password": "821012",
+        "user": "",
+        "password": "",
         "db": "stocksearchtest",
         "charset": "utf8"
     }

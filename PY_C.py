@@ -2,7 +2,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 def DB_GET(code):
     #建立連結
-    uri = "mongodb+srv://c04u41125:c04u49603@stocksearch.38esz2g.mongodb.net/?retryWrites=true&w=majority"
+    uri = "mongodb+srv://account:password@stocksearch.38esz2g.mongodb.net/?retryWrites=true&w=majority"
     client = MongoClient(uri, server_api=ServerApi('1'))
     #設定資料庫
     db = client.stock

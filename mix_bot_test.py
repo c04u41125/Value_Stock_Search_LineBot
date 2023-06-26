@@ -41,8 +41,9 @@ def verify():
             line_bot.reply_message(data['events'][0]['replyToken'],TextSendMessage(alt_text='123',text=ans))
             previous_data=data                                          #儲存data
         elif '存檔' in input_text :                         #如果使用者輸入存檔
-            checkid=previous_data['events'][0]['source']['userId']
             try:
+                checkid=previous_data['events'][0]['source']['userId']
+                userid=data['events'][0]['source']['userId']            #使用者LINE ID為table
                 if checkid == userid :
                     userid=data['events'][0]['source']['userId']            #使用者LINE ID為table
                     code=previous_data['events'][0]['message']['text']      #上次查詢的個股代號為欄位
